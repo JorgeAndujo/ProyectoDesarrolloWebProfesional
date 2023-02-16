@@ -6,6 +6,7 @@ import generateGuid from "./utils/generateGuid";
 
 const AccountRouter = lazy(() => import("./components/Account"));
 const InicioRouter = lazy(() => import("./components/Inicio"));
+const LoginRouter = lazy(() => import("./components/Account/Login"));
 
 //Rutas de administracion
 const UsuariosRouter = lazy(() => import("./components/Administracion/Usuarios"));
@@ -26,12 +27,13 @@ const listaDePaginas = [
 ];
 
 const RoutesDir = () => {
+  const session = localStorage.getItem("session");
   const location = useLocation();
   const currentKey = generateGuid();
   const timeout = { enter: 500, exit: 500 };
   const animationName = "rag-fadeInLeft";
 
-  if (listaDePaginas.indexOf(location.pathname) > -1) {
+  if (listaDePaginas.indexOf(location.pathname) > -1 || session === "false") {
     return (
       <Suspense fallback={() => <div>Cargando...</div>}>
         <Routes>

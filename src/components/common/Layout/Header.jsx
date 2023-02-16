@@ -141,6 +141,10 @@ const Header = () => {
                     fontFamily: 'TodaySHOP-Regular',
                     fontSize: '1.1vw',
                   }}
+                  onClick={() => {
+                    localStorage.setItem("session", "false");
+                    navigate("/login")
+                  }}
                 >
                   Cerrar Sesión
                 </div>
