@@ -1,30 +1,63 @@
 import { Button, Col, Form, Image, Input, Row } from "antd";
 import FormItem from "antd/es/form/FormItem";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { db } from "../../firebase/firebase";
+import { setLoggedInfo } from "../../utils/loggedInfo";
 
 const Login = () => {
   const navigate = useNavigate();
   const [form] = Form.useForm();
+  const [loadingInternal, setLoadingInternal] = useState(false);
 
-  const onSubmit = (value) => {
-    const u = localStorage.getItem("user");
-    const p = localStorage.getItem("pass");
-    if(value.usuario === u && value.contra === p){
-      Swal.fire({
-        icon: "success",
-        title: "¡ÉXITO!",
-        text: "Se ha iniciado sesión correctamente",
-        confirmButtonText: `Aceptar`,
-      }).then(() => {
-        localStorage.setItem("session", "true");
-        navigate("/inicio");
-      });
-    } else{
-      Swal.fire("Advertencia!", "El usuario o contraseña ingresados son incorrectos", "error");
+  const onSubmit = async (value) => {
+    setLoadingInternal(true);
+    try {
+      const docRef = query(
+        collection(db, "users"),
+        where("userName", "==", value.usuario)
+      );
+      const user = await getDocs(docRef);
+      if (!user.empty) {
+        const userData = user.docs
+          .map((doc) => ({ idDoc: doc.id, ...doc.data() }))
+          .find((x) => x.userName === value.usuario);
+        if (
+          (value.usuario === userData.userName ||
+            value.usuario === userData.mail) &&
+          value.contra === userData.password
+        ) {
+          Swal.fire({
+            icon: "success",
+            title: "¡ÉXITO!",
+            text: "Se ha iniciado sesión correctamente",
+            confirmButtonText: `Aceptar`,
+          }).then(() => {
+            localStorage.setItem("session", "true");
+            setLoggedInfo(userData);
+            navigate("/inicio");
+          });
+        } else {
+          Swal.fire("Advertencia!", "La contraseña es incorrecta.", "error");
+        }
+      } else {
+        Swal.fire("Advertencia!", "El usuario ingresado no existe.", "error");
+      }
+      setLoadingInternal(false);
+    } catch (error) {
+      console.log(error);
+      setLoadingInternal(false);
     }
-  }
+  };
 
   return (
     <>
@@ -70,7 +103,11 @@ const Login = () => {
                   </div>
                 </div>
               </div>
-              <Form form={form} layout={"vertical"} onFinish={(e) => onSubmit(e)}>
+              <Form
+                form={form}
+                layout={"vertical"}
+                onFinish={(e) => onSubmit(e)}
+              >
                 <div style={{ marginTop: "3vw" }}>
                   <Row>
                     <Col span={6}></Col>

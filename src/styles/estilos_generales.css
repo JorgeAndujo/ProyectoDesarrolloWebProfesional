@@ -115,3 +115,82 @@
   font-family: 'TodaySHOP-Regular';
   align-items: center;
 }
+
+.formGeneral2 .ant-row.ant-form-item .ant-col.ant-form-item-label label,
+.formGeneral .ant-row.ant-form-item .ant-col.ant-form-item-label label{
+  font-family: "TodaySHOP-Regular" !important; 
+  font-size: 1.2vw !important;
+}
+
+.ant-select-selector,
+.formGeneral2 input.ant-input,
+.formGeneral input.ant-input{
+font-size: 1.1vw !important;
+border-radius: 0.3vw !important;
+font-family: "TodaySHOP-Regular" !important; 
+height: 2.35vw !important;
+}
+
+form.ant-form.ant-form-vertical.formGeneral{
+  width: 83vw !important;
+}
+form.ant-form.ant-form-vertical.formGeneral2{
+  width: initial !important;
+}
+
+.formGeneral .ant-row.ant-form-item.especialLabel .ant-col.ant-form-item-label label{
+  font-size: 2.5vw !important;
+  font-family: 'TodaySHOP-Bold' !important;
+}
+.ant-row.ant-form-item.especialLabel2{
+  margin: 0 !important;
+}
+.formGeneral .ant-row.ant-form-item.especialLabel2 .ant-col.ant-form-item-label label{
+  font-size: 2vw !important;
+  margin:0% !important;
+  font-family: 'TodaySHOP-Bold' !important;
+}
+.formGeneral .ant-row.ant-form-item.especialLabel3 .ant-col.ant-form-item-label label{
+  font-size: 1.6vw !important;
+  text-align: center !important;
+  margin:0% !important;
+  font-family: 'TodaySHOP-Bold' !important;
+}
+
+.btnActivo button.ant-btn.ant-btn-default{
+  background-color: #15458D !important;
+  color:white !important; 
+}
+
+button.ant-btn.ant-btn-default.btnActInc {
+  background-color: rgb(180, 180, 180); 
+  color: white;
+}
+button.ant-btn.ant-btn-default.btnActInc:hover {
+  background-color: grey;
+  color: white !important;
+}
+
+.columnStyle.title {
+  background-color: #15458D;
+}
+
+.ant-table-wrapper{
+  width: 83vw !important;
+}
+.ant-table table{
+  font-family: "TodaySHOP-Regular" !important; 
+}
+thead.ant-table-thead{
+  background-color: #15458d;
+    color: white;
+}
+.ant-table-thead > tr > th{
+  background: inherit !important;
+  color: inherit !important;
+  font-family: "TodaySHOP-Bold" !important;
+  font-size: 1vw;
+}
+.ant-table-pagination.ant-pagination{
+  margin: 0.5vw 0vw !important;
+}
