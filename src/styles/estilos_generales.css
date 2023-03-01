@@ -194,3 +194,8 @@ thead.ant-table-thead{
 .ant-table-pagination.ant-pagination{
   margin: 0.5vw 0vw !important;
 }
+span.rutaAnteriorGeneral:hover{
+  color: #15458D;
+  cursor: pointer;
+  text-decoration: underline;
+}

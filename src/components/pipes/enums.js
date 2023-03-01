@@ -1,7 +1,7 @@
 export const Roles = {
   ADMINISTRADOR: "ADMINISTRADOR",
   GERENTE_ALMACEN: "GERENTE DE ALMACEN",
-  VENDEDOR: "VENTAS",
+  VENTAS: "VENDEDOR",
 };
 
 export const ListaRoles = [

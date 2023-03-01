@@ -8,6 +8,7 @@ import { usuarioLogueado } from "./utils/loggedInfo";
 const AccountRouter = lazy(() => import("./components/Account"));
 const InicioRouter = lazy(() => import("./components/Inicio"));
 const LoginRouter = lazy(() => import("./components/Account/Login"));
+const NotFound = lazy(() => import("./components/NotFound/NotFound"));
 
 //Rutas de administracion
 const UsuariosRouter = lazy(() => import("./components/Administracion/Usuarios"));
@@ -70,6 +71,8 @@ const RoutesDir = () => {
                   {/* RUTAS DE VENTAS */}
                   <Route path={"/ventas"} element={<VentasRouter />}/>
                   <Route path={"/historialVentas"} element={<HistorialVentasRouter />}/>
+
+                  <Route path={"*"} element={<NotFound />}/>
                   
                 </Routes>
               </Suspense>

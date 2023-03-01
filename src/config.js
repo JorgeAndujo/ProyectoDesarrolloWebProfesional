@@ -1,0 +1,1 @@
+export const formatosValidosFotoPerfil = ["jpg", "png", "gif", "jpeg", "bmp", "svg"];

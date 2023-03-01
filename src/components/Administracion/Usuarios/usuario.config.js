@@ -1,6 +1,10 @@
 import { Image } from "antd";
 import { Roles } from "../../pipes/enums";
-import FileImageOutlined from "@ant-design/icons";
+import {
+  EditOutlined,
+  CloseCircleOutlined,
+  EyeOutlined,
+} from "@ant-design/icons";
 
 export const headers = [
   {
@@ -35,7 +39,9 @@ export const headers = [
               marginLeft: "10px",
             }}
           >
-            <span style={{ fontWeight: 700 }}>{row.lastName.toUpperCase()}</span>
+            <span style={{ fontWeight: 700 }}>
+              {row.lastName.toUpperCase()}
+            </span>
             <span>{row.firstName.toUpperCase()}</span>
           </div>
         </div>
@@ -65,5 +71,23 @@ export const headers = [
     key: "rol",
     dataIndex: "rol",
     render: (_, row) => <div>{Roles[row.rol]}</div>,
+  },
+];
+
+export const actions = [
+  {
+    key: "detalle",
+    tooltip: "Detalle",
+    icon: <EyeOutlined />,
+  },
+  {
+    key: "editar",
+    tooltip: "Editar",
+    icon: <EditOutlined />,
+  },
+  {
+    key: "eliminar",
+    tooltip: "Eliminar",
+    icon: <CloseCircleOutlined />,
   },
 ];
